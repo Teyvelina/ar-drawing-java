@@ -20,6 +20,8 @@ import com.googlecreativelab.drawar.AppSettings;
 import javax.vecmath.Vector2f;
 import javax.vecmath.Vector3f;
 
+import static java.lang.StrictMath.max;
+
 public class LineUtils {
 
     /**
@@ -46,6 +48,16 @@ public class LineUtils {
             return outVal;
     }
 
+    public static float color(float value, float inputMin, float inputMax, float outputMin, float outputMax) {
+        if(value < inputMin || value > inputMax || inputMax == inputMin || outputMax == outputMin) {
+            return 0f;
+        }
+
+        float count = value / (inputMax - inputMin) * (outputMax - outputMin);
+
+        return count;
+
+    }
     /**
      * @param start
      * @param stop
